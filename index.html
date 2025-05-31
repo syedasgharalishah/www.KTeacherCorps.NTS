@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUCATION DEPARTMENT SCREENING TEST PREPARATION – May 31, 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA; /* Very light gray */
+            color: #2C3E50; /* Main text color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 10vh;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        .top-bar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0.75rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .top-bar .date-display {
+            color: #6D6875;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .top-bar .whatsapp-link {
+            color: #6D6875;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-section {
+            background-color: #ffffff;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 1rem;
+        }
+
+        .quiz-title {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar-container {
+            width: 80%;
+            max-width: 600px;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin: 1rem auto;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #20B2AA, #3EB489);
+            border-radius: 5px;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .banner-logo {
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .credits {
+            font-size: 0.85rem;
+            color: #6D6875;
+            margin-top: 0.5rem;
+        }
+
+        .card {
+            background-color: #FFF5EE; /* PeachPuff */
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin: 1rem auto;
+            max-width: 700px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        .button-gradient {
+            background-image: linear-gradient(to right, #E6E6FA, #FFDAB9); /* Lavender to PeachPuff */
+            color: #2C3E50;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .button-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .button-gradient:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .option-button {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 0.75rem;
+            color: #2C3E50;
+            font-weight: normal;
+        }
+
+        .option-button:hover:not(.selected) {
+            background-color: #f0f0f0;
+        }
+
+        .option-button.selected {
+            border-color: #6D6875;
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .option-button.correct {
+            background-color: #90EE90; /* LightGreen */
+            border-color: #28a745;
+            animation: pulse-green 0.5s ease-out forwards;
+        }
+
+        .option-button.incorrect {
+            background-color: #FF6B6B; /* Red pulse */
+            border-color: #dc3545;
+            animation: shake-red 0.5s ease-out forwards;
+        }
+
+        .special-question {
+            border: 3px solid #FFD700; /* Gold border */
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .explanation {
+            background-color: #e0f7fa;
+            border-left: 5px solid #20B2AA;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            color: #2C3E50;
+            font-size: 0.9rem;
+            display: none; /* Hidden by default */
+        }
+
+        .timer-display {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .question-progress {
+            font-size: 1rem;
+            color: #6D6875;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem;
+            }
+            .top-bar .date-display {
+                order: 2; /* Move date to bottom on mobile */
+                font-size: 0.8rem;
+            }
+            .top-bar .whatsapp-link {
+                order: 1; /* Move whatsapp to top on mobile */
+                font-size: 0.8rem;
+            }
+            .quiz-title {
+                font-size: 1.5rem;
+            }
+            .banner-logo {
+                max-width: 150px;
+            }
+            .card {
+                margin: 0.75rem auto;
+                padding: 1rem;
+            }
+            .button-gradient {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .option-button {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault()); // Disable right-click
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j')) {
+                e.preventDefault(); // Disable Ctrl+U, Ctrl+Shift+I, Ctrl+Shift+J
+            }
+            if (e.key === 'F12') {
+                e.preventDefault(); // Disable F12
+            }
+        });
+        document.addEventListener('copy', event => event.preventDefault()); // Disable copy
+        document.addEventListener('paste', event => event.preventDefault()); // Disable paste
+    </script>
+
+    <div class="top-bar">
+        <a href="https://chat.whatsapp.com/your-whatsapp-community-link" target="_blank" class="whatsapp-link">
+            <i class="fab fa-whatsapp"></i> Join WhatsApp Community
+        </a>
+        <div class="date-display" id="liveDate"></div>
+    </div>
+
+    <div class="header-section">
+        <h1 class="quiz-title" id="quizTitle"></h1>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <img src="https://i.ibb.co/LXdkJVy8/20250524-0050-Empowering-Educators-remix-01jw0makvqewdvqns1te3jvpgs.png" alt="Banner Logo" class="banner-logo mx-auto">
+        <div class="credits">
+            KP Teacher Corps | PREPARED BY: SYED ASGHAR ALI SHAH | Contact: 03265762698
+            <br>
+            Updated on: <span id="updatedDate"></span>
+        </div>
+    </div>
+
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div id="loginPage" class="card">
+            <h2 class="text-xl font-bold mb-4 text-center">Login</h2>
+            <div class="mb-4">
+                <label for="loginId" class="block text-sm font-medium text-gray-700 mb-1">ID:</label>
+                <input type="text" id="loginId" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" value="">
+            </div>
+            <div class="mb-6">
+                <label for="loginPassword" class="block text-sm font-medium text-gray-700 mb-1">Password:</label>
+                <input type="password" id="loginPassword" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" value="">
+            </div>
+            <p id="loginError" class="text-red-500 text-sm mb-4 hidden">Invalid ID or Password</p>
+            <button id="loginBtn" class="button-gradient w-full">Login</button>
+        </div>
+
+        <div id="candidateNamePage" class="card hidden">
+            <h2 class="text-xl font-bold mb-4 text-center">Candidate Information</h2>
+            <div class="mb-6">
+                <label for="candidateName" class="block text-sm font-medium text-gray-700 mb-1">Enter Full Name:</label>
+                <input type="text" id="candidateName" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" placeholder="Your Full Name">
+            </div>
+            <p id="nameError" class="text-red-500 text-sm mb-4 hidden">Please enter your full name.</p>
+            <button id="startQuizBtn" class="button-gradient w-full">Start Quiz</button>
+        </div>
+
+        <div id="quizPage" class="card hidden">
+            <div class="timer-display" id="timerDisplay"></div>
+            <div class="question-progress" id="questionProgress"></div>
+            <h2 class="text-lg font-semibold mb-4" id="questionText"></h2>
+            <div id="optionsContainer" class="flex flex-col gap-3 mb-6">
+                </div>
+            <div class="flex justify-between">
+                <button id="prevBtn" class="button-gradient px-6 py-2">Previous</button>
+                <button id="nextBtn" class="button-gradient px-6 py-2">Next</button>
+                <button id="submitQuizBtn" class="button-gradient px-6 py-2 hidden">Submit Quiz</button>
+            </div>
+            <div id="explanationDiv" class="explanation"></div>
+        </div>
+
+        <div id="resultsPage" class="card hidden">
+            <h2 class="text-xl font-bold mb-4 text-center">Quiz Results</h2>
+            <p class="mb-2"><strong>Candidate Name:</strong> <span id="resultCandidateName"></span></p>
+            <p class="mb-2"><strong>Date of Quiz:</strong> <span id="resultDate"></span></p>
+            <p class="mb-2"><strong>Score:</strong> <span id="resultScore"></span> / 200</p>
+            <p class="mb-2"><strong>Correct Answers:</strong> <span id="resultCorrect"></span></p>
+            <p class="mb-2"><strong>Incorrect Answers:</strong> <span id="resultIncorrect"></span></p>
+            <p class="mb-4"><strong>Time Taken:</strong> <span id="resultTimeTaken"></span></p>
+            <button id="restartQuizBtn" class="button-gradient w-full">Restart Quiz</button>
+        </div>
+    </main>
+
+    <script>
+        // Set the current date for display and logic
+        const CURRENT_DATE_STR = "May 31, 2025"; // MANDATORY DAILY INPUT
+        const CURRENT_DATE = new Date(CURRENT_DATE_STR);
+
+        // Update header dates
+        document.getElementById('liveDate').textContent = CURRENT_DATE_STR;
+        document.getElementById('updatedDate').textContent = CURRENT_DATE_STR;
+        document.getElementById('quizTitle').textContent = `EDUCATION DEPARTMENT SCREENING TEST PREPARATION – ${CURRENT_DATE_STR}`;
+
+        // Quiz Data Structure
+        const quizQuestions = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = []; // Stores { questionIndex: int, selectedOptionIndex: int, isCorrect: bool }
+        let quizStartTime;
+        let timerInterval;
+        const QUIZ_DURATION_MINUTES = 40;
+        let specialQuestionIndex = -1; // To store the index of the special question
+
+        // --- Helper Functions ---
+
+        /**
+         * Shuffles an array in place using Fisher-Yates (Knuth) shuffle.
+         * @param {Array} array - The array to shuffle.
+         */
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        /**
+         * Generates a unique ID for Formspree submission.
+         * @returns {string} A unique ID.
+         */
+        function generateUniqueId() {
+            return 'quiz_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        }
+
+        /**
+         * Converts seconds to a human-readable time string (e.g., "35 minutes 10 seconds").
+         * @param {number} totalSeconds - The total number of seconds.
+         * @returns {string} Formatted time string.
+         */
+        function formatTime(totalSeconds) {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            return `${minutes} minutes ${seconds} seconds`;
+        }
+
+        /**
+         * Updates the progress bar and question progress text.
+         */
+        function updateProgressBar() {
+            const progress = ((currentQuestionIndex + 1) / quizQuestions.length) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            document.getElementById('questionProgress').textContent = `Question ${currentQuestionIndex + 1}/${quizQuestions.length} – ${Math.round(progress)}% Complete`;
+        }
+
+        /**
+         * Displays a specific page and hides others.
+         * @param {string} pageId - The ID of the page to display.
+         */
+        function showPage(pageId) {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('candidateNamePage').classList.add('hidden');
+            document.getElementById('quizPage').classList.add('hidden');
+            document.getElementById('resultsPage').classList.add('hidden');
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        /**
+         * Starts the quiz timer.
+         */
+        function startTimer() {
+            quizStartTime = Date.now();
+            let timeLeft = QUIZ_DURATION_MINUTES * 60; // Convert minutes to seconds
+
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timerDisplay').textContent = `Time Left: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitQuiz(true); // Auto-submit on timer expiry
+                } else {
+                    timeLeft--;
+                }
+            }
+
+            updateTimerDisplay(); // Initial display
+            timerInterval = setInterval(updateTimerDisplay, 1000);
+        }
+
+        /**
+         * Renders the current question and its options.
+         */
+        function renderQuestion() {
+            const question = quizQuestions[currentQuestionIndex];
+            document.getElementById('questionText').innerHTML = question.question;
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = ''; // Clear previous options
+
+            // Remove special-question class from previous question if any
+            const quizCard = document.getElementById('quizPage');
+            quizCard.classList.remove('special-question');
+
+            // Add special-question class if it's today's special question and date matches
+            const today = new Date().toDateString();
+            if (question.special && CURRENT_DATE.toDateString() === today) {
+                quizCard.classList.add('special-question');
+            }
+
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.classList.add('option-button', 'w-full');
+                button.textContent = option;
+                button.dataset.optionIndex = index;
+                button.onclick = () => selectOption(index);
+
+                // Apply selected state if already answered
+                const userAnswer = userAnswers[currentQuestionIndex];
+                if (userAnswer && userAnswer.selectedOptionIndex === index) {
+                    button.classList.add('selected');
+                    if (userAnswer.isCorrect) {
+                        button.classList.add('correct');
+                    } else {
+                        button.classList.add('incorrect');
+                    }
+                    // Disable all options if already answered
+                    Array.from(optionsContainer.children).forEach(optBtn => optBtn.disabled = true);
+                    document.getElementById('explanationDiv').style.display = 'block';
+                }
+                optionsContainer.appendChild(button);
+            });
+
+            // Show/hide explanation
+            const explanationDiv = document.getElementById('explanationDiv');
+            explanationDiv.innerHTML = `<p class="font-bold">Explanation:</p><p>${question.explanation}</p>`;
+            if (userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].selectedOptionIndex !== undefined) {
+                explanationDiv.style.display = 'block';
+            } else {
+                explanationDiv.style.display = 'none';
+            }
+
+            // Update navigation buttons visibility
+            document.getElementById('prevBtn').classList.toggle('hidden', currentQuestionIndex === 0);
+            document.getElementById('nextBtn').classList.toggle('hidden', currentQuestionIndex === quizQuestions.length - 1);
+            document.getElementById('submitQuizBtn').classList.toggle('hidden', currentQuestionIndex !== quizQuestions.length - 1);
+
+            updateProgressBar();
+        }
+
+        /**
+         * Handles option selection by the user.
+         * @param {number} selectedOptionIndex - The index of the selected option.
+         */
+        function selectOption(selectedOptionIndex) {
+            const question = quizQuestions[currentQuestionIndex];
+            const isCorrect = (selectedOptionIndex === question.correctOptionIndex);
+
+            // Store user's answer
+            userAnswers[currentQuestionIndex] = {
+                questionIndex: currentQuestionIndex,
+                selectedOptionIndex: selectedOptionIndex,
+                isCorrect: isCorrect
+            };
+
+            // Apply visual feedback
+            const optionsContainer = document.getElementById('optionsContainer');
+            Array.from(optionsContainer.children).forEach((button, index) => {
+                button.disabled = true; // Disable all options after selection
+                button.classList.remove('selected', 'correct', 'incorrect'); // Clear previous states
+
+                if (index === selectedOptionIndex) {
+                    button.classList.add('selected');
+                    if (isCorrect) {
+                        button.classList.add('correct');
+                    } else {
+                        button.classList.add('incorrect');
+                    }
+                }
+            });
+
+            // Show explanation
+            document.getElementById('explanationDiv').style.display = 'block';
+        }
+
+        /**
+         * Navigates to the next question.
+         */
+        function nextQuestion() {
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            }
+        }
+
+        /**
+         * Navigates to the previous question.
+         */
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        /**
+         * Submits the quiz, calculates results, and displays them.
+         * @param {boolean} isAutoSubmit - True if submitted by timer, false otherwise.
+         */
+        function submitQuiz(isAutoSubmit = false) {
+            clearInterval(timerInterval); // Stop the timer
+
+            const endTime = Date.now();
+            const timeTakenSeconds = Math.round((endTime - quizStartTime) / 1000);
+
+            let correctCount = 0;
+            let incorrectCount = 0;
+
+            userAnswers.forEach(answer => {
+                if (answer && answer.isCorrect) {
+                    correctCount++;
+                } else if (answer && answer.selectedOptionIndex !== undefined) {
+                    incorrectCount++;
+                }
+            });
+
+            const score = (correctCount * 2) - (incorrectCount * 1);
+            const candidateName = document.getElementById('candidateName').value;
+
+            document.getElementById('resultCandidateName').textContent = candidateName;
+            document.getElementById('resultDate').textContent = CURRENT_DATE_STR;
+            document.getElementById('resultScore').textContent = score;
+            document.getElementById('resultCorrect').textContent = `${correctCount} / ${userAnswers.length}`;
+            document.getElementById('resultIncorrect').textContent = `${incorrectCount} / ${userAnswers.length}`;
+            document.getElementById('resultTimeTaken').textContent = formatTime(timeTakenSeconds);
+
+            showPage('resultsPage');
+
+            // Silent Formspree submission
+            const formData = new FormData();
+            formData.append('Candidate Name', candidateName);
+            formData.append('Date of Quiz', CURRENT_DATE_STR);
+            formData.append('Score', score);
+            formData.append('Correct Answers', correctCount);
+            formData.append('Incorrect Answers', incorrectCount);
+            formData.append('Time Taken', formatTime(timeTakenSeconds));
+            formData.append('Quiz ID', generateUniqueId()); // Unique ID for each submission
+
+            fetch('https://formspree.io/f/xwpojgab', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Quiz results submitted successfully!');
+                } else {
+                    console.error('Formspree submission failed.');
+                }
+            }).catch(error => {
+                console.error('Error during Formspree submission:', error);
+            });
+        }
+
+        // --- Event Listeners ---
+
+        document.getElementById('loginBtn').addEventListener('click', () => {
+            const id = document.getElementById('loginId').value;
+            const password = document.getElementById('loginPassword').value;
+            const loginError = document.getElementById('loginError');
+
+            if (id === '8888' && password === '8888') {
+                loginError.classList.add('hidden');
+                showPage('candidateNamePage');
+            } else {
+                loginError.classList.remove('hidden');
+            }
+        });
+
+        document.getElementById('startQuizBtn').addEventListener('click', () => {
+            const candidateNameInput = document.getElementById('candidateName');
+            const candidateName = candidateNameInput.value.trim();
+            const nameError = document.getElementById('nameError');
+
+            if (candidateName) {
+                nameError.classList.add('hidden');
+                // Initialize userAnswers array for the new quiz attempt
+                userAnswers = new Array(quizQuestions.length).fill(null);
+                currentQuestionIndex = 0;
+                startTimer();
+                renderQuestion();
+                showPage('quizPage');
+            } else {
+                nameError.classList.remove('hidden');
+            }
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+        document.getElementById('prevBtn').addEventListener('click', prevQuestion);
+        document.getElementById('submitQuizBtn').addEventListener('click', () => submitQuiz(false));
+        document.getElementById('restartQuizBtn').addEventListener('click', () => {
+            // Reset quiz state
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            clearInterval(timerInterval); // Clear any lingering timer
+            // Re-shuffle questions for a new attempt
+            initializeQuiz();
+            showPage('loginPage'); // Go back to login for a fresh start
+        });
+
+        // --- Quiz Initialization ---
+        function initializeQuiz() {
+            // Clear previous questions
+            quizQuestions.length = 0;
+
+            // Pedagogy (10 MCQs from Pages 17-20)
+            const pedagogyMCQs = [
+                { question: "Which of the following is a key principle of effective teaching?", options: ["Teacher-centered instruction", "Passive learning", "Active student engagement", "Memorization only"], correctOptionIndex: 2, explanation: "Effective teaching promotes active student participation and engagement (Page 17)." },
+                { question: "What is the purpose of lesson planning?", options: ["To make teaching rigid", "To ensure systematic and organized instruction", "To limit creativity in the classroom", "To avoid student questions"], correctOptionIndex: 1, explanation: "Lesson planning helps teachers organize their content and methods (Page 17)." },
+                { question: "Which teaching method focuses on direct instruction and teacher control?", options: ["Discovery learning", "Project-based learning", "Lecture method", "Inquiry-based learning"], correctOptionIndex: 2, explanation: "The lecture method is a traditional, teacher-centered approach (Page 18)." },
+                { question: "Which teaching method encourages students to explore and find answers on their own?", options: ["Lecture method", "Demonstration method", "Discovery method", "Drill and practice"], correctOptionIndex: 2, explanation: "Discovery learning emphasizes student exploration and problem-solving (Page 18)." },
+                { question: "What is the primary benefit of using visual aids in teaching?", options: ["To make lessons longer", "To distract students", "To enhance understanding and retention", "To replace teacher explanation"], correctOptionIndex: 2, explanation: "Visual aids help students grasp concepts more easily and remember them (Page 19)." },
+                { question: "Which of the following is a characteristic of a good learning environment?", options: ["Strict and intimidating", "Supportive and inclusive", "Chaotic and disorganized", "Competitive only"], correctOptionIndex: 1, explanation: "A positive learning environment is supportive, safe, and inclusive for all students (Page 19)." },
+                { question: "What is the role of motivation in learning?", options: ["It is irrelevant to learning.", "It hinders learning.", "It enhances and directs learning.", "It only applies to adults."], correctOptionIndex: 2, explanation: "Motivation is crucial for driving and sustaining the learning process (Page 20)." },
+                { question: "Which type of motivation comes from external rewards or pressures?", options: ["Intrinsic motivation", "Extrinsic motivation", "Amotivation", "Achievement motivation"], correctOptionIndex: 1, explanation: "Extrinsic motivation is driven by external factors like grades or praise (Page 20)." },
+                { question: "When students learn for the sake of learning and personal satisfaction, it is called:", options: ["Extrinsic motivation", "Intrinsic motivation", "Negative motivation", "Social motivation"], correctOptionIndex: 1, explanation: "Intrinsic motivation comes from internal desires and enjoyment (Page 20)." },
+                { question: "Which of the following is a strategy to promote intrinsic motivation?", options: ["Offering monetary rewards", "Creating engaging and challenging tasks", "Threatening with punishment", "Comparing students' performance publicly"], correctOptionIndex: 1, explanation: "Engaging tasks foster genuine interest and intrinsic motivation (Page 20)." }
+            ];
+            quizQuestions.push(...pedagogyMCQs);
+
+            // General Science (25 MCQs from Pages 153-170)
+            const generalScienceMCQs = [
+                { question: "What is the process by which sound travels through a medium?", options: ["Reflection", "Refraction", "Vibration", "Absorption"], correctOptionIndex: 2, explanation: "Sound is produced by vibrations and travels as waves through a medium (Page 153)." },
+                { question: "Which of the following is a unit of sound intensity?", options: ["Hertz", "Meter", "Decibel", "Joule"], correctOptionIndex: 2, explanation: "Decibel (dB) is the unit for measuring sound intensity or loudness (Page 154)." },
+                { question: "What is the phenomenon where light bends as it passes from one medium to another?", options: ["Reflection", "Refraction", "Diffraction", "Interference"], correctOptionIndex: 1, explanation: "Refraction is the bending of light as it passes from one medium to another (Page 155)." },
+                { question: "Which type of lens is thicker in the middle and thinner at the edges, causing parallel light rays to converge?", options: ["Concave lens", "Convex lens", "Plano-concave lens", "Plano-convex lens"], correctOptionIndex: 1, explanation: "A convex lens converges light rays (Page 156)." },
+                { question: "What is the primary function of a simple machine like a lever or pulley?", options: ["To create energy", "To multiply force or change its direction", "To generate heat", "To store electricity"], correctOptionIndex: 1, explanation: "Simple machines make work easier by changing force or direction (Page 157)." },
+                { question: "Which of the following is an example of a lever?", options: ["Ramp", "Wheelbarrow", "Screw", "Pulley"], correctOptionIndex: 1, explanation: "A wheelbarrow acts as a lever (Page 158)." },
+                { question: "What is the force that opposes motion between two surfaces in contact?", options: ["Gravity", "Tension", "Friction", "Normal force"], correctOptionIndex: 2, explanation: "Friction resists relative motion (Page 159)." },
+                { question: "Which of the following is a unit of energy?", options: ["Newton", "Watt", "Joule", "Volt"], correctOptionIndex: 2, explanation: "Joule (J) is the SI unit of energy (Page 160)." },
+                { question: "What is the process of converting chemical energy into electrical energy in a battery?", options: ["Photosynthesis", "Electrolysis", "Electrochemical reaction", "Combustion"], correctOptionIndex: 2, explanation: "Batteries produce electricity through chemical reactions (Page 161)." },
+                { question: "Which type of circuit has only one path for current to flow?", options: ["Parallel circuit", "Series circuit", "Complex circuit", "Mixed circuit"], correctOptionIndex: 1, explanation: "In a series circuit, components are connected end-to-end (Page 162)." },
+                { question: "What is the force that attracts objects with mass towards each other?", options: ["Friction", "Magnetism", "Gravity", "Tension"], correctOptionIndex: 2, explanation: "Gravity is the fundamental force of attraction between masses (Page 163)." },
+                { question: "Which of the following is a characteristic of magnetic materials?", options: ["They are always transparent.", "They repel all metals.", "They are attracted to magnets.", "They are good electrical insulators."], correctOptionIndex: 2, explanation: "Magnetic materials are attracted to magnets (Page 164)." },
+                { question: "What is the process by which a liquid turns into a solid?", options: ["Melting", "Evaporation", "Freezing", "Condensation"], correctOptionIndex: 2, explanation: "Freezing is the phase transition from liquid to solid (Page 165)." },
+                { question: "Which of the following is a physical change?", options: ["Burning wood", "Rusting iron", "Dissolving sugar in water", "Baking a cake"], correctOptionIndex: 2, explanation: "Dissolving sugar changes its state but not its chemical composition (Page 166)." },
+                { question: "What is the smallest unit of an element that retains the chemical properties of that element?", options: ["Molecule", "Compound", "Atom", "Ion"], correctOptionIndex: 2, explanation: "An atom is the basic unit of a chemical element (Page 167)." },
+                { question: "Which of the following is a compound?", options: ["Oxygen", "Hydrogen", "Water", "Nitrogen"], correctOptionIndex: 2, explanation: "Water ($\text{H}_2\text{O}$) is formed from two different elements (Page 168)." },
+                { question: "What is the chemical symbol for gold?", options: ["Ag", "Fe", "Au", "Cu"], correctOptionIndex: 2, explanation: "Au is the symbol for gold (Page 169)." },
+                { question: "Which of the following is an acid?", options: ["Sodium hydroxide", "Baking soda", "Vinegar", "Ammonia"], correctOptionIndex: 2, explanation: "Vinegar (acetic acid) is a common acid (Page 170)." },
+                { question: "What is the speed of sound in air at room temperature (approximately)?", options: ["30 m/s", "343 m/s", "1500 m/s", "300,000 km/s"], correctOptionIndex: 1, explanation: "The speed of sound in air is around 343 meters per second (Page 153)." },
+                { question: "Which type of mirror produces a virtual, upright, and magnified image?", options: ["Plane mirror", "Convex mirror", "Concave mirror", "Spherical mirror"], correctOptionIndex: 2, explanation: "A concave mirror can produce magnified images when the object is placed within its focal length (Page 156)." },
+                { question: "What is the work done if a force of 10 N moves an object 5 meters?", options: ["2 J", "5 J", "10 J", "50 J"], correctOptionIndex: 3, explanation: "Work = Force × Distance = $10 \text{ N} \\times 5 \text{ m} = 50 \text{ J}$ (Page 157)." },
+                { question: "Which law states that energy cannot be created or destroyed, only transformed?", options: ["Newton's Law", "Ohm's Law", "Law of Conservation of Energy", "Law of Gravity"], correctOptionIndex: 2, explanation: "The Law of Conservation of Energy is a fundamental principle in physics (Page 160)." },
+                { question: "What is the resistance of a circuit if the voltage is 12 V and the current is 2 A? (Ohm's Law: V = IR)", options: ["6 Ohm", "10 Ohm", "14 Ohm", "24 Ohm"], correctOptionIndex: 0, explanation: "Resistance = Voltage / Current = 12 V / 2 A = 6 Ohm (Page 162)." },
+                { question: "Which of the following is a chemical change?", options: ["Melting ice", "Boiling water", "Burning paper", "Breaking glass"], correctOptionIndex: 2, explanation: "Burning paper results in new substances (ash, smoke) being formed (Page 166)." },
+                { question: "What is the pH value of a neutral solution?", options: ["0", "7", "14", "Less than 7"], correctOptionIndex: 1, explanation: "A pH of 7 indicates a neutral solution (Page 170)." }
+            ];
+            quizQuestions.push(...generalScienceMCQs);
+
+            // Social Studies (15 MCQs from Pages 507-524)
+            const socialStudiesMCQs = [
+                { question: "What is the primary role of the judiciary in a democratic system?", options: ["To make laws", "To enforce laws", "To interpret laws", "To represent the people"], correctOptionIndex: 2, explanation: "The judiciary's main function is to interpret and apply laws (Page 507)." },
+                { question: "Which of the following is a fundamental principle of democracy?", options: ["Rule by a single person", "Freedom of speech", "Suppression of dissent", "Centralized economic control"], correctOptionIndex: 1, explanation: "Freedom of speech is a core democratic value (Page 508)." },
+                { question: "What is the term for a system where power is divided between a central government and regional governments?", options: ["Unitary system", "Federal system", "Confederation", "Autocracy"], correctOptionIndex: 1, explanation: "A federal system shares power between national and sub-national entities (Page 509)." },
+                { question: "Which of the following is a characteristic of a unitary system of government?", options: ["Strong regional governments", "Power concentrated in the central government", "Weak central government", "Decentralized power"], correctOptionIndex: 1, explanation: "In a unitary system, the central government holds most power (Page 510)." },
+                { question: "What is the purpose of elections in a democracy?", options: ["To select a king", "To allow citizens to choose their representatives", "To limit public participation", "To establish a dictatorship"], correctOptionIndex: 1, explanation: "Elections enable citizens to elect their leaders (Page 511)." },
+                { question: "Which of the following is a responsibility of citizens in a democratic society?", options: ["Ignoring laws", "Paying taxes", "Avoiding civic duties", "Demanding privileges without responsibilities"], correctOptionIndex: 1, explanation: "Paying taxes is a civic duty (Page 512)." },
+                { question: "What is the term for the process by which a country's economy grows over time?", options: ["Recession", "Inflation", "Economic development", "Stagnation"], correctOptionIndex: 2, explanation: "Economic development refers to the improvement of economic well-being (Page 513)." },
+                { question: "Which of the following is a factor that contributes to economic development?", options: ["Low literacy rates", "Limited infrastructure", "Investment in human capital", "Political instability"], correctOptionIndex: 2, explanation: "Investing in education and health improves human capital, boosting development (Page 514)." },
+                { question: "What is the role of agriculture in Pakistan's economy?", options: ["It is negligible.", "It is a major contributor to GDP and employment.", "It is only for subsistence.", "It has no impact on exports."], correctOptionIndex: 1, explanation: "Agriculture is a backbone of Pakistan's economy (Page 515)." },
+                { question: "Which of the following is a challenge facing Pakistan's agricultural sector?", options: ["Abundant water resources", "Modern farming techniques", "Water scarcity and inefficient irrigation", "High crop yields"], correctOptionIndex: 2, explanation: "Water management is a key issue in Pakistani agriculture (Page 516)." },
+                { question: "What is the term for the buying and selling of goods and services?", options: ["Production", "Consumption", "Trade", "Investment"], correctOptionIndex: 2, explanation: "Trade involves the exchange of goods and services (Page 517)." },
+                { question: "Which of the following is a major export of Pakistan?", options: ["Automobiles", "Textiles", "Heavy machinery", "Electronics"], correctOptionIndex: 1, explanation: "Textiles are a significant export commodity for Pakistan (Page 518)." },
+                { question: "What is the primary purpose of a country's foreign policy?", options: ["To isolate itself from other nations", "To promote its national interests in the international arena", "To engage in conflicts", "To avoid all international relations"], correctOptionIndex: 1, explanation: "Foreign policy aims to protect and advance national interests (Page 519)." },
+                { question: "Which of the following is a major international organization that Pakistan is a member of?", options: ["European Union", "African Union", "United Nations", "ASEAN"], correctOptionIndex: 2, explanation: "Pakistan is a member of the United Nations (Page 520)." },
+                { question: "What is the term for the shared beliefs, values, customs, and behaviors of a group of people?", options: ["Economy", "Geography", "Culture", "Politics"], correctOptionIndex: 2, explanation: "Culture encompasses the shared aspects of a society (Page 521)." }
+            ];
+            quizQuestions.push(...socialStudiesMCQs);
+
+            // English (25 MCQs from Pages 823-830)
+            const englishMCQs = [
+                { question: "Which of the following is a sentence that asks a question?", options: ["Declarative", "Imperative", "Interrogative", "Exclamatory"], correctOptionIndex: 2, explanation: "An interrogative sentence asks a question (Page 823)." },
+                { question: "What is the function of an imperative sentence?", options: ["To make a statement", "To ask a question", "To give a command or request", "To express strong emotion"], correctOptionIndex: 2, explanation: "Imperative sentences give orders or make requests (Page 823)." },
+                { question: "Which punctuation mark is used at the end of an exclamatory sentence?", options: [".", "?", "!", ","], correctOptionIndex: 2, explanation: "An exclamation mark is used for exclamatory sentences (Page 823)." },
+                { question: "Identify the subject in the sentence: \"The old man walked slowly.\"", options: ["Old", "Man", "Walked", "Slowly"], correctOptionIndex: 1, explanation: "The subject is the noun or pronoun that performs the action (Page 824)." },
+                { question: "What is the predicate in the sentence: \"Birds *sing beautifully*.\"", options: ["Birds", "Sing", "Beautifully", "Sing beautifully"], correctOptionIndex: 3, explanation: "The predicate includes the verb and all words that complete its meaning (Page 824)." },
+                { question: "Which of the following is a simple predicate?", options: ["Has been studying", "Is running", "Slept", "Will have finished"], correctOptionIndex: 2, explanation: "A simple predicate is just the verb itself (Page 824)." },
+                { question: "What is a compound subject?", options: ["A subject with a long description.", "Two or more subjects joined by a conjunction.", "A subject that also acts as an object.", "A single subject with multiple verbs."], correctOptionIndex: 1, explanation: "A compound subject consists of multiple nouns or pronouns acting as the subject (Page 825)." },
+                { question: "Which of these sentences contains a compound predicate?", options: ["She ate and drank.", "He is tall.", "They went to the store.", "The book is interesting."], correctOptionIndex: 0, explanation: "A compound predicate has two or more verbs for the same subject (Page 825)." },
+                { question: "What is a direct object?", options: ["A noun that modifies a verb.", "A noun or pronoun that receives the action of a transitive verb.", "A noun that renames the subject.", "A noun that acts as an adverb."], correctOptionIndex: 1, explanation: "A direct object directly receives the verb's action (Page 826)." },
+                { question: "Identify the direct object in the sentence: \"He bought a car.\"", options: ["He", "Bought", "A", "Car"], correctOptionIndex: 3, explanation: "'Car' is what he bought (Page 826)." },
+                { question: "What is an indirect object?", options: ["The main object of the sentence.", "The object that receives the direct object.", "A noun that describes the verb.", "A noun that acts as a subject."], correctOptionIndex: 1, explanation: "An indirect object is the recipient of the direct object (Page 826)." },
+                { question: "In the sentence, \"She sent *him* a letter,\" what is the indirect object?", options: ["She", "Sent", "Him", "Letter"], correctOptionIndex: 2, explanation: "'Him' is the one to whom the letter was sent (Page 826)." },
+                { question: "Which of the following is a subject complement?", options: ["A noun that modifies a verb.", "A noun or adjective that follows a linking verb and renames or describes the subject.", "A noun that receives the action of the verb.", "A noun that acts as an adverb."], correctOptionIndex: 1, explanation: "Subject complements provide more information about the subject after a linking verb (Page 827)." },
+                { question: "In the sentence, \"He became a *doctor*,\" what is 'doctor'?", options: ["Direct object", "Indirect object", "Subject complement", "Object complement"], correctOptionIndex: 2, explanation: "'Doctor' renames the subject 'He' (Page 827)." },
+                { question: "What is an object complement?", options: ["A noun or adjective that renames or describes the direct object.", "A noun that modifies the subject.", "A noun that acts as a verb.", "A noun that is the direct object."], correctOptionIndex: 0, explanation: "An object complement provides more information about the direct object (Page 828)." },
+                { question: "In the sentence, \"They painted the house *green*,\" what is 'green'?", options: ["Direct object", "Indirect object", "Subject complement", "Object complement"], correctOptionIndex: 3, explanation: "'Green' describes the direct object 'house' (Page 828)." },
+                { question: "Which of the following is a phrase?", options: ["He runs.", "Under the bridge", "She is happy.", "They arrived late."], correctOptionIndex: 1, explanation: "A phrase is a group of words without a subject-verb pair (Page 829)." },
+                { question: "What is the main characteristic of a clause?", options: ["It has no verb.", "It has no subject.", "It contains both a subject and a predicate.", "It always expresses a complete thought."], correctOptionIndex: 2, explanation: "A clause always contains a subject and a verb (Page 829)." },
+                { question: "Which of these is an independent clause?", options: ["Because she smiled", "When the bell rang", "The students studied hard", "Although it was raining"], correctOptionIndex: 2, explanation: "An independent clause can stand alone as a complete sentence (Page 829)." },
+                { question: "What is a dependent clause?", options: ["A clause that expresses a complete thought.", "A clause that can stand alone as a sentence.", "A clause that cannot stand alone as a complete sentence.", "A clause that always begins with a coordinating conjunction."], correctOptionIndex: 2, explanation: "A dependent clause relies on an independent clause for complete meaning (Page 830)." },
+                { question: "Which of the following words introduces a dependent clause?", options: ["And", "But", "While", "Or"], correctOptionIndex: 2, explanation: "Subordinating conjunctions like 'while' introduce dependent clauses (Page 830)." },
+                { question: "What is a sentence fragment?", options: ["A complete sentence.", "A sentence with a compound subject.", "A group of words that does not express a complete thought.", "A sentence with a direct object."], correctOptionIndex: 2, explanation: "A sentence fragment is an incomplete sentence (Page 823)." },
+                { question: "What is the difference between a phrase and a clause?", options: ["A phrase has a subject and verb, a clause does not.", "A clause has a subject and verb, a phrase does not.", "They are the same.", "A phrase is always longer than a clause."], correctOptionIndex: 1, explanation: "A clause contains a subject and a verb, whereas a phrase does not (Page 829)." },
+                { question: "Which type of sentence is formed by joining an independent clause and one or more dependent clauses?", options: ["Simple sentence", "Compound sentence", "Complex sentence", "Compound-complex sentence"], correctOptionIndex: 2, explanation: "A complex sentence combines an independent clause with at least one dependent clause (Page 830)." },
+                { question: "In the sentence \"He ran, *and she walked*,\" what is \"and she walked\"?", options: ["Independent clause", "Dependent clause", "Phrase", "Simple predicate"], correctOptionIndex: 0, explanation: "This is an independent clause joined by a coordinating conjunction (Page 825)." }
+            ];
+            quizQuestions.push(...englishMCQs);
+
+            // Mathematics (25 MCQs from Pages 975-981)
+            const mathematicsMCQs = [
+                { question: "What is the sum of $1/3 + 1/6$?", options: ["1/9", "2/9", "1/2", "2/3"], correctOptionIndex: 2, explanation: "Common denominator is 6: $2/6 + 1/6 = 3/6 = 1/2$ (Page 975)." },
+                { question: "Convert 0.4 into a fraction in its simplest form.", options: ["4/10", "2/5", "1/4", "4/1"], correctOptionIndex: 1, explanation: "0.4 is $4/10$, which simplifies to $2/5$ (Page 976)." },
+                { question: "What is the percentage equivalent of 0.8?", options: ["8%", "80%", "0.8%", "800%"], correctOptionIndex: 1, explanation: "$0.8 \\times 100 = 80\%$ (Page 977)." },
+                { question: "If a jacket costs $80 and is on sale for 25% off, what is the sale price?", options: ["$20", "$40", "$60", "$75"], correctOptionIndex: 2, explanation: "25% of $80 is $20. $80 - $20 = $60 (Page 978)." },
+                { question: "What is the area of a circle with a diameter of 10 cm? (Use $\\pi = 3.14$)", options: ["31.4 cm²", "78.5 cm²", "157 cm²", "314 cm²"], correctOptionIndex: 1, explanation: "Radius = 5 cm. Area = $\\pi r^2 = 3.14 \\times 5^2 = 3.14 \\times 25 = 78.5$ cm² (Page 979)." },
+                { question: "What is the volume of a cylinder with a radius of 3 cm and a height of 7 cm? (Use $\\pi \\approx 22/7$)", options: ["66 cm³", "132 cm³", "198 cm³", "396 cm³"], correctOptionIndex: 3, explanation: "Volume = $\\pi r^2 h = (22/7) \\times 3^2 \\times 7 = (22/7) \\times 9 \\times 7 = 22 \\times 9 = 198$ cm³ (Page 980)." },
+                { question: "Which of these is a measure of dispersion?", options: ["Mean", "Median", "Mode", "Range"], correctOptionIndex: 3, explanation: "Range measures the spread of data (Page 981)." },
+                { question: "What is the mean of the following set of numbers: 5, 10, 15, 20?", options: ["10", "12.5", "15", "50"], correctOptionIndex: 1, explanation: "Mean = $(5+10+15+20)/4 = 50/4 = 12.5$ (Page 981)." },
+                { question: "What is the median of the following set of numbers: 1, 2, 3, 4, 5, 6?", options: ["3", "3.5", "4", "7"], correctOptionIndex: 1, explanation: "For an even set, median is the average of the two middle numbers: $(3+4)/2 = 3.5$ (Page 981)." },
+                { question: "What is the mode of the following set of numbers: 10, 12, 10, 15, 12, 10?", options: ["12", "15", "10", "No mode"], correctOptionIndex: 2, explanation: "The number 10 appears most frequently (Page 981)." },
+                { question: "What is the value of $x$ in the equation $3x - 5 = 10$?", options: ["3", "4", "5", "6"], correctOptionIndex: 2, explanation: "$3x = 15$, so $x = 5$ (Page 975)." },
+                { question: "Simplify the expression: $2a + 3b + 4a - b$", options: ["$6a + 2b$", "$6a + 4b$", "$2a + 2b$", "$5a + 3b$"], correctOptionIndex: 0, explanation: "Combine like terms: $(2a+4a) + (3b-b) = 6a + 2b$ (Page 976)." },
+                { question: "What is the value of $(7 - 2) \\times 4$?", options: ["10", "20", "28", "35"], correctOptionIndex: 1, explanation: "Follow order of operations: $5 \\times 4 = 20$ (Page 975)." },
+                { question: "What is the surface area of a cube with a side length of 5 cm?", options: ["25 cm²", "100 cm²", "150 cm²", "250 cm²"], correctOptionIndex: 2, explanation: "A cube has 6 equal faces. Area of one face = $5^2 = 25$ cm². Total surface area = $6 \\times 25 = 150$ cm² (Page 980)." },
+                { question: "Which of these is a polygon with 8 sides?", options: ["Hexagon", "Heptagon", "Octagon", "Nonagon"], correctOptionIndex: 2, explanation: "An octagon has 8 sides (Page 979)." },
+                { question: "What is the value of $1/2 \\times 1/3$?", options: ["1/5", "1/6", "2/5", "3/2"], correctOptionIndex: 1, explanation: "Multiply numerators and denominators: $1/6$ (Page 975)." },
+                { question: "Convert 1.5 hours into minutes.", options: ["60 minutes", "90 minutes", "120 minutes", "150 minutes"], correctOptionIndex: 1, explanation: "$1.5 \\times 60 = 90$ minutes (Page 974)." },
+                { question: "What is the next number in the sequence: 1, 4, 9, 16, __?", options: ["20", "25", "30", "36"], correctOptionIndex: 1, explanation: "This is a sequence of perfect squares ($1^2, 2^2, 3^2, 4^2, 5^2$) (Page 968)." },
+                { question: "If a car travels at 70 km/h for 2.5 hours, how much distance does it cover?", options: ["140 km", "175 km", "210 km", "250 km"], correctOptionIndex: 1, explanation: "Distance = Speed × Time = $70 \\times 2.5 = 175$ km (Page 978)." },
+                { question: "What is the value of $10^2 - 6^2$?", options: ["4", "16", "36", "64"], correctOptionIndex: 3, explanation: "$10^2 = 100$, $6^2 = 36$. $100 - 36 = 64$ (Page 969)." },
+                { question: "Which of the following is a rational number?", options: ["$\\sqrt{2}$", "$\\pi$", "$0.333...$", "$e$"], correctOptionIndex: 2, explanation: "A rational number can be expressed as a fraction of two integers. $0.333... = 1/3$ (Page 976)." },
+                { question: "What is the value of $x$ in the equation $x/2 = 8$?", options: ["4", "10", "16", "24"], correctOptionIndex: 2, explanation: "$x = 8 \\times 2 = 16$ (Page 975)." },
+                { question: "What is the area of a circle with a radius of 1 cm? (Use $\\pi = 3.14$)", options: ["3.14 cm²", "6.28 cm²", "9.42 cm²", "12.56 cm²"], correctOptionIndex: 0, explanation: "Area = $\\pi r^2 = 3.14 \\times 1^2 = 3.14$ cm² (Page 979)." },
+                { question: "What is the probability of drawing a red card from a standard deck of 52 playing cards?", options: ["1/4", "1/2", "3/4", "1/13"], correctOptionIndex: 1, explanation: "There are 26 red cards (hearts and diamonds) in a deck of 52. Probability = $26/52 = 1/2$ (Page 981)." },
+                { question: "What is the value of $2^4$?", options: ["6", "8", "16", "32"], correctOptionIndex: 2, explanation: "$2^4 = 2 \\times 2 \\times 2 \\times 2 = 16$ (Page 969)." }
+            ];
+            quizQuestions.push(...mathematicsMCQs);
+
+            // Randomly select one special question
+            specialQuestionIndex = Math.floor(Math.random() * quizQuestions.length);
+            quizQuestions[specialQuestionIndex].special = true;
+
+            // Apply 30% chance to shuffle the entire quiz order
+            if (Math.random() < 0.3) {
+                shuffleArray(quizQuestions);
+                // After shuffling, find the new index of the special question
+                specialQuestionIndex = quizQuestions.findIndex(q => q.special);
+            }
+        }
+
+        // Initialize the quiz when the script loads
+        initializeQuiz();
+    </script>
+</body>
+</html>
